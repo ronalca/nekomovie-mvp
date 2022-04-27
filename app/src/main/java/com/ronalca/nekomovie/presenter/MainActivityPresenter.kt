@@ -9,8 +9,4 @@ class MainActivityPresenter(private val view: MainContract.View) : MainContract.
     override suspend fun getMovieTitles(): Array<String> {
         return model.getMovieTitles()
     }
-
-    override suspend fun getMovieDetails(videoId: Int) : Array<String> {
-        return model.getMovieDetails(videoId)
-    }
 }

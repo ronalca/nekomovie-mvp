@@ -10,15 +10,18 @@ class ApiClient {
         try {
             val apiResponse = ApiAdapter.API_CLIENT.getApiData()
 
-            if (apiResponse.isSuccessful && apiResponse.body() != null) {
+            if (apiResponse.isSuccessful) {
                 val items = apiResponse.body()?.categories
+                val newList = items?.map { category ->
+                    category.videos
+                }
 
                 if (items != null) {
                     for (i in 0 until items.count()) {
-                        var videoSze = items[i].videos.size
+                        val videoSze = items[i].videos.size
 
                         for (j in 0 until videoSze) {
-                            var title = items[i].videos[j].title.toString()
+                            val title = items[i].videos[j].title.toString()
                             Log.d("MovieTitle", title)
                             movieTitles += title
                         }
