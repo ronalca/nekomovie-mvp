@@ -3,17 +3,19 @@ package com.ronalca.nekomovie.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Intent
+import androidx.lifecycle.MutableLiveData
+import android.util.Log
 
 import com.ronalca.nekomovie.R
 import com.ronalca.nekomovie.presenter.MainActivityPresenter
 import com.ronalca.nekomovie.MainContract
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity(), MainContract.View {
     private val presenter: MainContract.Presenter = MainActivityPresenter(this)
+    private val ioScope = CoroutineScope(Dispatchers.IO)
+    //private val movieLiveData = MutableLiveData<Mov>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +24,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun showMovieTitles() {
-        CoroutineScope(Dispatchers.IO).launch {
+
+        ioScope.launch {
             val movieList: Array<String> = presenter.getMovieTitles()
 
             withContext(Dispatchers.Main) {
@@ -32,6 +35,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    override fun showMovieDetails(videoId: Int) {
+    override fun onDestroy() {
+        super.onDestroy()
+        ioScope.cancel()
     }
 }

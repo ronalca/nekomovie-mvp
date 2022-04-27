@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Renoir-PC/AndroidStudioProjects/nekomovie/app/src/main/res/layout/activity_main.xml" value="0.4" />
-        <entry key="..\:/Users/Renoir-PC/AndroidStudioProjects/nekomovie/app/src/main/res/layout/movie_items.xml" value="0.536" />
+        <entry key="..\:/Users/Renoir-PC/AndroidStudioProjects/nekomovie/app/src/main/res/layout/activity_details.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/Renoir-PC/AndroidStudioProjects/nekomovie/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Renoir-PC/AndroidStudioProjects/nekomovie/app/src/main/res/layout/movie_items.xml" value="0.3780369290573372" />
       </map>
     </option>
   </component>
