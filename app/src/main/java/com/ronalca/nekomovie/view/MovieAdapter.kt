@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.ronalca.nekomovie.R
 
-class MovieAdapter(private val movieList: Array<String>) :
+class MovieAdapter(private val movieTitles: MutableList<String>) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     // Describes an item view and its place within the RecyclerView
@@ -30,11 +30,11 @@ class MovieAdapter(private val movieList: Array<String>) :
 
     // Returns the size of data list
     override fun getItemCount(): Int {
-        return movieList.size
+        return movieTitles.size
     }
 
     // Displays data at a certain position
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(movieList[position])
+        holder.bind(movieTitles[position])
     }
 }

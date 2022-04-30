@@ -6,6 +6,6 @@ class DetailsContract {
     }
 
     interface Presenter : MainContract {
-        suspend fun getMovieDetails(videoId: Int) : Array<String>
+        suspend fun getMovieDetails(videoId: Int) : MutableList<String>
     }
 }

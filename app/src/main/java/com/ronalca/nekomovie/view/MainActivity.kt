@@ -15,22 +15,25 @@ import kotlinx.coroutines.*
 class MainActivity : AppCompatActivity(), MainContract.View {
     private val presenter: MainContract.Presenter = MainActivityPresenter(this)
     private val ioScope = CoroutineScope(Dispatchers.IO)
-    //private val movieLiveData = MutableLiveData<Mov>
+    private val movieLiveData: MutableLiveData<String> = MutableLiveData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        showMovieTitles()
+        
     }
 
     override fun showMovieTitles() {
-
         ioScope.launch {
-            val movieList: Array<String> = presenter.getMovieTitles()
+            val movieTitles = presenter.getMovieTitles()
 
             withContext(Dispatchers.Main) {
                 val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-                recyclerView.adapter = MovieAdapter(movieList)
+                recyclerView.adapter = MovieAdapter(movieTitles)
+
+                for (i in 0 until movieTitles.count()) {
+                    movieLiveData.postValue(movieTitles[i])
+                }
             }
         }
     }
@@ -39,4 +42,5 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         super.onDestroy()
         ioScope.cancel()
     }
+
 }

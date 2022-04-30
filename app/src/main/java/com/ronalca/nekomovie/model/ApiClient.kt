@@ -4,17 +4,14 @@ import android.util.Log
 
 class ApiClient {
 
-    suspend fun getMovieTitles() : Array<String> {
-        var movieTitles: Array<String> = emptyArray()
+    suspend fun getMovieTitles() : MutableList<String> {
+        val movieTitles: MutableList<String> = mutableListOf()
 
         try {
             val apiResponse = ApiAdapter.API_CLIENT.getApiData()
 
             if (apiResponse.isSuccessful) {
                 val items = apiResponse.body()?.categories
-                val newList = items?.map { category ->
-                    category.videos
-                }
 
                 if (items != null) {
                     for (i in 0 until items.count()) {
@@ -37,8 +34,8 @@ class ApiClient {
         return movieTitles
     }
 
-    suspend fun getMovieDetails(videoId: Int) : Array<String> {
-        var movieDetails: Array<String> = emptyArray()
+    suspend fun getMovieDetails(videoId: Int) : MutableList<String> {
+        var movieDetails: MutableList<String> = mutableListOf()
 
         return movieDetails
     }
