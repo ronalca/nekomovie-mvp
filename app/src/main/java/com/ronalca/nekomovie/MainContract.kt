@@ -6,6 +6,6 @@ interface MainContract {
     }
 
     interface Presenter : MainContract {
-        suspend fun getMovieTitles() : MutableList<String>
+        suspend fun getMovieTitles()
     }
-}
+} 
