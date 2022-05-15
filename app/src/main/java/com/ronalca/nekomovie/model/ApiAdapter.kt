@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/"
+private const val BASE_URL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/"
 
 object ApiAdapter {
     val API_CLIENT: ApiInterface = Retrofit.Builder()
