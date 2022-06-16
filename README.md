@@ -1,6 +1,6 @@
 # nekomovie-mvp
 
-A simple project created to explore and implement new Android development tools and features mainly on architecture components and third-party libraries.
+A self-taught project created to explore and learn new Android development tools and features mainly on architecture components and third-party libraries.
 
 The following are the techniques and tools used in the project:
 * MVP pattern
