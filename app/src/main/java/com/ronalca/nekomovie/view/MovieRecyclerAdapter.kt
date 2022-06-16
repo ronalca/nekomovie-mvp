@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-
+ 
 import com.ronalca.nekomovie.R
 
 class MovieRecyclerAdapter(val mItemClickListener: ItemClickListener) :
     RecyclerView.Adapter<MovieRecyclerAdapter.MovieViewHolder>() {
 
-    private var items: MutableList<String> = mutableListOf()
+    private var items: List<String> = listOf()
 
     interface ItemClickListener {
         fun onItemClick(position: Int)
@@ -56,7 +56,10 @@ class MovieRecyclerAdapter(val mItemClickListener: ItemClickListener) :
         holder.bind(items[position])
     }
 
-    fun submitList(movieList: MutableList<String>) {
+    fun submitList(movieList: List<String>) {
         items = movieList
+
+        // TODO: replace with listAdapter!
+        notifyDataSetChanged()
     }
 }

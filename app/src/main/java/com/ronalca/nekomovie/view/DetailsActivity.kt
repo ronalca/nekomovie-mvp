@@ -37,7 +37,7 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
         val imgView: ImageView = findViewById(R.id.movie_imageView)
         val textView: TextView = findViewById(R.id.TextMultiLine)
 
-        val details = Observer<MutableList<String>> { detail ->
+        val details = Observer<List<String>> { detail ->
 
             textView.text = detail.toString().plus("\n")
             val imgUri = detail[4].toString()

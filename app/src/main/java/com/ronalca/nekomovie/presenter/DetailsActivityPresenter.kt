@@ -9,8 +9,8 @@ class DetailsActivityPresenter(private val view: DetailsContract.View): DetailsC
     private val model = ApiClient()
 
     // Create LiveData with a MutableList
-    private val _detailsLiveData = MutableLiveData<MutableList<String>>()
-    val detailsLiveData: LiveData<MutableList<String>> = _detailsLiveData
+    private val _detailsLiveData = MutableLiveData<List<String>>()
+    val detailsLiveData: LiveData<List<String>> = _detailsLiveData
 
     override suspend fun getMovieDetails(videoId: Int) {
         _detailsLiveData.postValue(model.getMovieDetails(videoId))

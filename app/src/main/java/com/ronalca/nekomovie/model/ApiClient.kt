@@ -4,8 +4,8 @@ import android.util.Log
 
 class ApiClient {
 
-    suspend fun getMovieTitles(): MutableList<String> {
-        val movieList: MutableList<String> = mutableListOf()
+    suspend fun getMovieTitles(): List<String> {
+        var movieList: List<String> = listOf()
 
         try {
             val apiResponse = ApiAdapter.API_CLIENT.getApiData()
@@ -39,7 +39,7 @@ class ApiClient {
         return movieList
     }
 
-    suspend fun getMovieDetails(videoId: Int) : MutableList<String> {
+    suspend fun getMovieDetails(videoId: Int) : List<String> {
         val movieDetails: MutableList<String> = mutableListOf()
 
         try {

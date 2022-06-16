@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import androidx.lifecycle.Observer
 import kotlinx.coroutines.*
 
 import com.ronalca.nekomovie.R
@@ -22,27 +21,26 @@ class MainActivity : AppCompatActivity(), MainContract.View, MovieRecyclerAdapte
         setContentView(R.layout.activity_main)
 
         initMovieListRecyclerView()
-        showMovieTitles()
+        ioScope.launch {
+            presenter.getMovieTitles()
+        }
     }
 
     private fun initMovieListRecyclerView() {
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         movieAdapter = MovieRecyclerAdapter(this@MainActivity)
+        recyclerView.adapter = movieAdapter
 
-        // Create the observer which updates the UI.
-        val movies = Observer<MutableList<String>> { movie ->
-            recyclerView.adapter = movieAdapter
-            movieAdapter.submitList(movie)
-        }
-
+        /*
         // Observe the LiveData object from the presenter and pass this activity as the LifecycleOwner and the observer.
-        presenter.movieLiveData.observe(this@MainActivity, movies)
+        presenter.movieLiveData.observe(this@MainActivity) { movie ->
+            recyclerView.adapter = movieAdapter
+        }
+        */
     }
 
-    override fun showMovieTitles() {
-        ioScope.launch {
-            presenter.getMovieTitles()
-        }
+    override fun showMovieTitles(movieList: List<String>) {
+        movieAdapter.submitList(movieList)
     }
 
     override fun onItemClick(position: Int) {
