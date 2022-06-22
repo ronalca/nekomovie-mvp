@@ -2,7 +2,12 @@ package com.ronalca.nekomovie.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ApiResponse (
+/**
+ * This data class defines movie categories which includes name and videos.
+ * The property names of this data class are used by Gson to match the names of values in JSON.
+ */
+
+data class MovieResponse (
     @SerializedName("categories" ) var categories : ArrayList<Categories> = arrayListOf()
 )
 

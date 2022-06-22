@@ -2,18 +2,16 @@ package com.ronalca.nekomovie.model
 
 import android.util.Log
 
-class ApiClient {
+class MovieDataSource {
 
     suspend fun getMovieTitles(): List<String> {
         var movieList: List<String> = listOf()
 
         try {
-            val apiResponse = ApiAdapter.API_CLIENT.getApiData()
+            val apiResponse = GoogleApiAdapter.API_CLIENT.getApiData()
 
             if (apiResponse.isSuccessful) {
                 val items = apiResponse.body()?.categories
-
-                // re-implement here using flatmap method!
 
                 if (items != null) {
                     for (i in 0 until items.count()) {
@@ -43,7 +41,7 @@ class ApiClient {
         val movieDetails: MutableList<String> = mutableListOf()
 
         try {
-            val apiResponse = ApiAdapter.API_CLIENT.getApiData()
+            val apiResponse = GoogleApiAdapter.API_CLIENT.getApiData()
 
             if (apiResponse.isSuccessful) {
                 val items = apiResponse.body()?.categories

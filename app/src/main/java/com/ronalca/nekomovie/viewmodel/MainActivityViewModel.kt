@@ -1,16 +1,17 @@
 package com.ronalca.nekomovie.viewmodel
 
-import com.ronalca.nekomovie.model.ApiClient
+import com.ronalca.nekomovie.model.MovieDataSource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class MainActivityViewModel : ViewModel() {
-    private val model = ApiClient()
+    private val model = MovieDataSource()
 
     // Create LiveData with a MutableList
     private val _movieLiveData = MutableLiveData<List<String>>()
@@ -21,7 +22,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     private fun getMovieTitles() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             _movieLiveData.postValue(model.getMovieTitles())
         }
     }
