@@ -58,8 +58,6 @@ class MovieRecyclerAdapter(val mItemClickListener: ItemClickListener) :
 
     fun submitList(movieList: List<String>) {
         items = movieList
-
-        // TODO: replace with listAdapter!
         notifyDataSetChanged()
     }
 }

@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 
 import com.ronalca.nekomovie.DetailsContract
 import com.ronalca.nekomovie.R
-import com.ronalca.nekomovie.presenter.DetailsActivityPresenter
+import com.ronalca.nekomovie.viewmodel.DetailsActivityPresenter
 
 import kotlinx.coroutines.*
 import coil.load
@@ -40,7 +40,7 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
         val details = Observer<List<String>> { detail ->
 
             textView.text = detail.toString().plus("\n")
-            val imgUri = detail[4].toString()
+            val imgUri = detail[4]
             imgView.load("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/".plus(imgUri))
         }
 

@@ -1,4 +1,4 @@
-package com.ronalca.nekomovie.presenter
+package com.ronalca.nekomovie.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

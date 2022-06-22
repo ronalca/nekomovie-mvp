@@ -4,16 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.*
 
 import com.ronalca.nekomovie.R
-import com.ronalca.nekomovie.presenter.MainActivityPresenter
-import com.ronalca.nekomovie.MainContract
+import com.ronalca.nekomovie.viewmodel.MainActivityViewModel
 
-class MainActivity : AppCompatActivity(), MainContract.View, MovieRecyclerAdapter.ItemClickListener {
-    private val presenter = MainActivityPresenter(this@MainActivity)
-    private val ioScope = CoroutineScope(Dispatchers.IO)
+class MainActivity : AppCompatActivity(), MovieRecyclerAdapter.ItemClickListener {
+    private val viewModel: MainActivityViewModel by viewModels()
     private lateinit var movieAdapter: MovieRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,9 +20,6 @@ class MainActivity : AppCompatActivity(), MainContract.View, MovieRecyclerAdapte
         setContentView(R.layout.activity_main)
 
         initMovieListRecyclerView()
-        ioScope.launch {
-            presenter.getMovieTitles()
-        }
     }
 
     private fun initMovieListRecyclerView() {
@@ -31,16 +27,9 @@ class MainActivity : AppCompatActivity(), MainContract.View, MovieRecyclerAdapte
         movieAdapter = MovieRecyclerAdapter(this@MainActivity)
         recyclerView.adapter = movieAdapter
 
-        /*
-        // Observe the LiveData object from the presenter and pass this activity as the LifecycleOwner and the observer.
-        presenter.movieLiveData.observe(this@MainActivity) { movie ->
-            recyclerView.adapter = movieAdapter
-        }
-        */
-    }
-
-    override fun showMovieTitles(movieList: List<String>) {
-        movieAdapter.submitList(movieList)
+        viewModel.movieLiveData.observe(this@MainActivity, Observer<List<String>>{ movies ->
+            movieAdapter.submitList(movies)
+        })
     }
 
     override fun onItemClick(position: Int) {
@@ -48,10 +37,5 @@ class MainActivity : AppCompatActivity(), MainContract.View, MovieRecyclerAdapte
         val intent = Intent(this@MainActivity, DetailsActivity()::class.java)
         intent.putExtra("videoId", position)
         startActivity(intent)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        ioScope.cancel()
     }
 }
