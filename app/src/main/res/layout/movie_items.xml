@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,27 @@
 
     <TextView
         android:id="@+id/movie_title_textview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
+        android:layout_width="350dp"
+        android:layout_height="213dp"
 
+        android:layout_marginTop="28dp"
         android:text="@string/textview"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="266dp"
+        android:layout_height="173dp"
+        app:layout_constraintBottom_toBottomOf="@+id/movie_title_textview"
+        app:layout_constraintEnd_toEndOf="@+id/movie_title_textview"
+        app:layout_constraintStart_toStartOf="@+id/movie_title_textview"
+        app:layout_constraintTop_toTopOf="@+id/movie_title_textview"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="imageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

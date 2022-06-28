@@ -10,10 +10,3 @@ The following are the techniques and tools used in the project:
 * RecyclerView
 * Consuming REST API data
 
-ToDo:
-* Migrate Presenters to ViewModels (MVVM pattern) with LiveData
-* Implement clean architecture
-* Navigation architecture components
-* Improve UI that comforms with Google's Material Design
-* Conduct unit test using JUnit
-

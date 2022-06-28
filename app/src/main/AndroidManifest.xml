@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ronalca.nekomovie">
 
+    <!-- In order for our app to access the Internet, we need to define this permission. -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nekomovie">
         <activity
-            android:name=".view.DetailsActivity"
+            android:name=".presentation.moviedetail.MovieDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".presentation.movielist.MovieListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

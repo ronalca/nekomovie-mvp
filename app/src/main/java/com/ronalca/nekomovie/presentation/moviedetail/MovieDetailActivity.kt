@@ -1,4 +1,20 @@
-package com.ronalca.nekomovie.view
+/*
+ * Copyright 2022 Rony Alcala
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.ronalca.nekomovie.presentation.moviedetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,15 +22,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 
-import com.ronalca.nekomovie.DetailsContract
+import com.ronalca.nekomovie.presentation.moviedetail.MovieDetailContract
 import com.ronalca.nekomovie.R
-import com.ronalca.nekomovie.viewmodel.DetailsActivityPresenter
+import com.ronalca.nekomovie.presentation.moviedetail.MovieDetailPresenter
 
 import kotlinx.coroutines.*
 import coil.load
 
-class DetailsActivity : AppCompatActivity(), DetailsContract.View {
-    private val presenter = DetailsActivityPresenter(this@DetailsActivity)
+class MovieDetailActivity : AppCompatActivity(), MovieDetailContract.View {
+    private val presenter = MovieDetailPresenter(this@MovieDetailActivity)
     private val ioScope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +60,7 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
             imgView.load("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/".plus(imgUri))
         }
 
-        presenter.detailsLiveData.observe(this@DetailsActivity, details)
+        presenter.detailsLiveData.observe(this@MovieDetailActivity, details)
     }
 
     override fun onDestroy() {
