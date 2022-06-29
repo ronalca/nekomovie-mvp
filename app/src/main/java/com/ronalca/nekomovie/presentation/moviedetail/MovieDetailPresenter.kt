@@ -19,7 +19,6 @@ package com.ronalca.nekomovie.presentation.moviedetail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ronalca.nekomovie.data.MovieDataSource
-import com.ronalca.nekomovie.presentation.moviedetail.MovieDetailContract
 
 class MovieDetailPresenter(private val view: MovieDetailContract.View): MovieDetailContract.Presenter {
     private val model = MovieDataSource()

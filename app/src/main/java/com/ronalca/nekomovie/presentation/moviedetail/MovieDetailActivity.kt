@@ -22,12 +22,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 
-import com.ronalca.nekomovie.presentation.moviedetail.MovieDetailContract
-import com.ronalca.nekomovie.R
-import com.ronalca.nekomovie.presentation.moviedetail.MovieDetailPresenter
-
 import kotlinx.coroutines.*
 import coil.load
+
+import com.ronalca.nekomovie.R
 
 class MovieDetailActivity : AppCompatActivity(), MovieDetailContract.View {
     private val presenter = MovieDetailPresenter(this@MovieDetailActivity)
@@ -54,9 +52,8 @@ class MovieDetailActivity : AppCompatActivity(), MovieDetailContract.View {
         val textView: TextView = findViewById(R.id.TextMultiLine)
 
         val details = Observer<List<String>> { detail ->
-
             textView.text = detail.toString().plus("\n")
-            val imgUri = detail[4]
+            val imgUri = detail[5]
             imgView.load("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/".plus(imgUri))
         }
 

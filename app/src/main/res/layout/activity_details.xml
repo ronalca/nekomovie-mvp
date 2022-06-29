@@ -8,40 +8,40 @@
 
     <ImageView
         android:id="@+id/movie_imageView"
-        android:layout_width="325dp"
-        android:layout_height="233dp"
+        android:layout_width="270dp"
+        android:layout_height="426dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="TODO"
-        app:layout_constraintBottom_toTopOf="@+id/TextMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/title_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/movie_imageView"
+        android:text="Movie Details"
+        android:textColor="#3F51B5"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/TextMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintTop_toBottomOf="@+id/movie_imageView" />
 
     <EditText
         android:id="@+id/TextMultiLine"
-        android:layout_width="325dp"
-        android:layout_height="340dp"
-        android:layout_marginBottom="72dp"
+        android:layout_width="349dp"
+        android:layout_height="188dp"
+        android:layout_marginBottom="36dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:textColor="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

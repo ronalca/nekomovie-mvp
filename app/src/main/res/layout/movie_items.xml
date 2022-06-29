@@ -7,27 +7,17 @@
 
     <TextView
         android:id="@+id/movie_title_textview"
-        android:layout_width="350dp"
-        android:layout_height="213dp"
+        android:layout_width="322dp"
+        android:layout_height="53dp"
 
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:text="@string/textview"
+        android:textColor="#3F51B5"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="266dp"
-        android:layout_height="173dp"
-        app:layout_constraintBottom_toBottomOf="@+id/movie_title_textview"
-        app:layout_constraintEnd_toEndOf="@+id/movie_title_textview"
-        app:layout_constraintStart_toStartOf="@+id/movie_title_textview"
-        app:layout_constraintTop_toTopOf="@+id/movie_title_textview"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:contentDescription="imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
